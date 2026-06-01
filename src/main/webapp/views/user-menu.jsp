@@ -11,7 +11,7 @@
 <body class = "fade-in">
 	
 	<div class = "header">
-		<button class = "logout" type = "button" onclick="location.href='/ShoppingSite/LoginAction/logout'">ログアウト</button>
+		<button class = "logout" type = "button" onclick="location.href='/ShoppingSite/LoginAction/logout'">Logout</button>
 	</div>
 	
 	<p class = "msg">ようこそ、${customer.last_name}さん！</p>
@@ -30,5 +30,6 @@
 	
 	</div>
 
+<script src="../js/user-menu.js"></script>
 </body>
 </html>
