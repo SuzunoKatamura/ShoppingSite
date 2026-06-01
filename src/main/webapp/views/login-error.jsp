@@ -4,9 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="../css/login-error.css">
+<title>Login error</title>
 </head>
-<body>
+
+<body class="fade-in">
+
+<div class="container">
+    <div class="card">
+
+        <h1 class="title">ログインに失敗しました</h1>
+
+        <p class="msg">IDもしくはパスワードが違います</p>
+
+        <button class="btn" type="button"
+            onclick="location.href='/ShoppingSite/views/login-in.jsp'">
+            ログイン画面へ戻る
+        </button>
+
+    </div>
+</div>
 
 </body>
 </html>

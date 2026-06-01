@@ -4,9 +4,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="../css/user-menu.css">
+<title>User menu</title>
 </head>
-<body>
+
+<body class = "fade-in">
+	
+	<div class = "header">
+		<button class = "logout" type = "button" onclick="location.href='/ShoppingSite/LoginAction/logout'">ログアウト</button>
+	</div>
+	
+	<p class = "msg">ようこそ、${customer.last_name}さん！</p>
+	
+	<div class = "container">
+	
+		<div class = "card">
+
+			<div class = "action">
+				<button class = "edit" type = "submit">修正</button>
+				<button class = "delete" type = "submit" >削除</button>
+			</div>
+			
+			
+		</div>
+	
+	</div>
 
 </body>
 </html>
