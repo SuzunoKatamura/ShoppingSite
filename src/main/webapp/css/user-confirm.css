@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+body {
+    background: #ECF0F3;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* タイトル */
+h2 {
+    text-align: center;
+    margin: 40px 0 20px;
+    color: #555;
+}
+
+/* ステッパー */
+.stepper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* ステップ */
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* アイコン丸 */
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ECF0F3;
+    box-shadow: inset 3px 3px 6px #d1d9e6,
+                inset -3px -3px 6px #ffffff;
+}
+
+/* SVGサイズ */
+.icon img {
+    width: 20px;
+    height: 20px;
+    filter: grayscale(100%) opacity(0.4);
+}
+
+/* アクティブ */
+.step.active .icon {
+    background: #4A6CF7;
+}
+
+.step.active .icon img {
+    filter: brightness(0) invert(1);
+}
+
+/* ラベル */
+.label {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #888;
+}
+
+/* 線 */
+.line {
+    width: 60px;
+    height: 4px;
+    margin-top: 20px;
+    border-radius: 2px;
+    background: #d1d9e6;
+}
+
+.line.active {
+    background: #4A6CF7;
+}
+
+/* 確認カード（重要） */
+.confirm-item {
+    width: 420px;
+    margin: 10px auto;
+    padding: 12px 15px;
+
+    border-radius: 12px;
+
+    background: #ECF0F3;
+    box-shadow: inset 3px 3px 6px #d1d9e6,
+                inset -3px -3px 6px #ffffff;
+
+    color: #555;
+    font-size: 14px;
+}
+
+/* 左のラベル */
+.confirm-item span {
+    color: #4A6CF7;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* フォーム全体中央 */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ボタン共通 */
+input[type="submit"] {
+    padding: 10px 20px;
+    margin: 10px 5px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ECF0F3;
+    color: #4A6CF7;
+    font-weight: bold;
+
+    box-shadow: 4px 4px 8px #d1d9e6,
+                -4px -4px 8px #ffffff;
+
+    cursor: pointer;
+}
+
+/* 押下 */
+input[type="submit"]:active {
+    box-shadow: inset 4px 4px 8px #d1d9e6,
+                inset -4px -4px 8px #ffffff;
+}

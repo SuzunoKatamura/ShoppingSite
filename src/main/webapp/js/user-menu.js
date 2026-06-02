@@ -2,6 +2,7 @@
  * 
  */
 
+
 let canvas, ctx;
 let render, init;
 let blob;

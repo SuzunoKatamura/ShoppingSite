@@ -32,5 +32,26 @@ public class CustomerDAO extends DAO {
 		return customer;
 		
 	}
+	
+	public void insert(Customer c) throws Exception {
+
+	    Connection con = getConnection();
+
+	    PreparedStatement st = con.prepareStatement(
+	        "INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)"
+	    );
+
+	    st.setString(1, c.getMember_id());
+	    st.setString(2, c.getPassword());
+	    st.setString(3, c.getLast_name());
+	    st.setString(4, c.getFirst_name());
+	    st.setString(5, c.getAddress());
+	    st.setString(6, c.getMail_address());
+
+	    st.executeUpdate();
+
+	    st.close();
+	    con.close();
+	}
 
 }

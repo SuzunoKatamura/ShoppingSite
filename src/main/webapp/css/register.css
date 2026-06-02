@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+body {
+    background: #ECF0F3;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 500px;
+    margin: 80px auto;
+}
+
+/* タイトル */
+h2 {
+    text-align: center;
+    margin-bottom: 32px;
+    color: #555;
+}
+
+/* 入力欄 */
+
+.form-area {
+    text-align: center;
+    margin-top: 80px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+	display: block;
+	margin: 10px auto 15px auto;
+
+    border: none;
+    outline: none;
+    border-radius: 10px;
+
+    background: #ECF0F3;
+    box-shadow: inset 4px 4px 8px #d1d9e6,
+                inset -4px -4px 8px #ffffff;
+}
+
+/* ボタン */
+input[type="submit"] {
+    width: 70%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+	display: block;
+	margin: 20px auto;
+
+    background: #ECF0F3;
+    color: #4A6CF7;
+    font-weight: bold;
+
+    box-shadow: 4px 4px 8px #d1d9e6,
+                -4px -4px 8px #ffffff;
+    transition: 0.2s;
+	transform: translateY(30px);
+}
+
+input[type="submit"]:active {
+    box-shadow: inset 4px 4px 8px #d1d9e6,
+                inset -4px -4px 8px #ffffff;
+}
+
+/*ステッパー*/
+/*.stepper {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin: 30px 0;*/
+/*}*/
+
+/* 丸いステップ */
+/*.step {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    border-radius: 50%;*/
+
+/*    background: #ECF0F3;*/
+/*    box-shadow: inset 3px 3px 6px #d1d9e6,*/
+/*                inset -3px -3px 6px #ffffff;*/
+
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+
+/*    font-size: 12px;*/
+/*    color: #888;*/
+/*}*/
+
+/* アクティブ状態 */
+/*.step.active {*/
+/*    background: #4A6CF7;*/
+/*    color: white;*/
+
+/*    box-shadow: 3px 3px 6px #d1d9e6,*/
+/*                -3px -3px 6px #ffffff;*/
+/*}*/
+
+/* つなぎ線 */
+/*.line {*/
+/*    width: 60px;*/
+/*    height: 4px;*/
+/*    background: #d1d9e6;*/
+/*    margin: 0 10px;*/
+/*    border-radius: 2px;*/
+/*}*/
+
+/* 進行済みライン */
+/*.line.active {*/
+/*    background: #4A6CF7;*/
+/*}*/
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+/* ステップ全体 */
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 丸 */
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ECF0F3;
+    box-shadow: inset 3px 3px 6px #d1d9e6,
+                inset -3px -3px 6px #ffffff;
+
+    font-size: 18px;
+}
+
+.icon img {
+    width: 20px;
+    height: 20px;
+}
+
+/* アクティブ */
+.step.active .icon {
+    background: #4A6CF7;
+    color: white;
+
+    box-shadow: 3px 3px 6px #d1d9e6,
+                -3px -3px 6px #ffffff;
+}
+
+/* テキスト */
+.label {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #888;
+}
+
+/* 線 */
+.line {
+    width: 60px;
+    height: 4px;
+    margin: 0 10px;
+
+    background: #d1d9e6;
+    border-radius: 2px;
+	transform: translateY(-10px);
+}
+
+.line.active {
+    background: #4A6CF7;
+}
+
