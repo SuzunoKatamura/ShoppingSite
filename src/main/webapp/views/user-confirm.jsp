@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/user-confirm.css">
-<title>Insert title here</title>
+<title>Check</title>
 </head>
 
 <body>
+
+<div class="container">
 
 	<h2>入力内容確認</h2>
 	
@@ -30,7 +32,7 @@
 	        <div class="label">確認</div>
 	    </div>
 	
-	    <div class="line"></div>
+	    <div class="line active"></div>
 	
 	    <div class="step">
 	        <div class="icon">
@@ -48,7 +50,7 @@
 	<div class="confirm-item"><span>住所</span> ${customer.address}</div>
 	<div class="confirm-item"><span>メール</span> ${customer.mail_address}</div>
 
-	<form action="/ShoppingSite/confirm/user-insert" method="post">
+	<form action="${pageContext.request.contextPath}/confirm/user-insert" method="post">
 		<input type="hidden" name="member_id" value="${customer.member_id}">
 		<input type="hidden" name="password" value="${customer.password}">
 		<input type="hidden" name="last_name" value="${customer.last_name}">
@@ -56,12 +58,21 @@
 		<input type="hidden" name="address" value="${customer.address}">
 		<input type="hidden" name="mail_address" value="${customer.mail_address}">
 		
-		<input type="submit"value="登録確定">
+		<input type="submit"value="登録">
 	</form>
 
-	<form action="<%= request.getContextPath() %>/views/register.jsp" method="get">
+	<form action="${pageContext.request.contextPath}/confirm/register-back" method="post">
+		<input type="hidden" name="member_id" value="${customer.member_id}">
+	    <input type="hidden" name="password" value="${customer.password}">
+	    <input type="hidden" name="last_name" value="${customer.last_name}">
+	    <input type="hidden" name="first_name" value="${customer.first_name}">
+	    <input type="hidden" name="address" value="${customer.address}">
+	    <input type="hidden" name="mail_address" value="${customer.mail_address}">
+    
 		<input type="submit" value="戻る">
 	</form>
+	
+</div>
 
 </body>
 </html>

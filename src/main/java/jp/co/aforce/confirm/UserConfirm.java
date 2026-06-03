@@ -30,6 +30,33 @@ public class UserConfirm extends HttpServlet {
         customer.setFirst_name(request.getParameter("first_name"));
         customer.setAddress(request.getParameter("address"));
         customer.setMail_address(request.getParameter("mail_address"));
+        
+        
+        
+        String memberId = request.getParameter("member_id");
+        String password = request.getParameter("password");
+        String mail = request.getParameter("mail_address");
+
+        String error = null;
+
+        if (memberId == null || memberId.isBlank()) {
+            error = "メンバーIDを入力してください";
+        } else if(password == null || password.length() > 10){
+            error = "パスワードは10文字以内で入力してください";
+        } else if (mail == null || !mail.contains("@")) {
+            error = "メール形式が正しくありません";
+        }
+        
+        if (error != null) {
+
+            request.setAttribute("error", error);
+            request.setAttribute("customer", customer);
+
+            request.getRequestDispatcher("/views/register.jsp")
+                   .forward(request, response);
+
+            return;
+        }
 
         request.setAttribute("customer", customer);
 

@@ -16,10 +16,21 @@ import jp.co.aforce.dao.CustomerDAO;
  */
 @WebServlet("/confirm/user-insert")
 public class UserInsert extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+
+    protected void doPost(
+    		HttpServletRequest request, HttpServletResponse response
+    		) throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
+        
+     // 画面（JSP）からパラメータを取得
+        String memberId = request.getParameter("member_id");
+        String password = request.getParameter("password");
+        String lastName = request.getParameter("last_name");
+        String firstName = request.getParameter("first_name");
+        String address = request.getParameter("address");
+        String mailAddress = request.getParameter("mail_address");
+        String username = request.getParameter("username");
 
         Customer customer = new Customer();
 
@@ -31,15 +42,38 @@ public class UserInsert extends HttpServlet {
         customer.setMail_address(request.getParameter("mail_address"));
 
         CustomerDAO dao = new CustomerDAO();
+        
         try {
-			dao.insert(customer);
-		} catch (Exception e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
-		}
+            // 1. 会員IDの重複チェック
+            if (dao.isMemberIdExists(memberId)) {
+                request.setAttribute("errorMsg", "この会員IDは既に登録されています。");
+                // 登録画面（入力フォームがあるJSP）のパスに戻す
+                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+                return; // 登録処理に進ませず、ここで処理を終了する
+            }
+            
+            // 2. メールアドレスの重複チェック
+            if (dao.isEmailExists(mailAddress)) {
+                request.setAttribute("errorMsg", "このメールアドレスは既に登録されています。");
+                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+                return;
+            }
+            
+            // 3. ユーザーネームの重複チェック
+//            if (dao.isUsernameExists(username)) {
+//                request.setAttribute("errorMsg", "このユーザーネームは既に使われています。");
+//                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+//                return;
+//            }
 
-        request.getRequestDispatcher("user-out.jsp")
+            // すべてのチェックを通過したら、DBへ挿入（INSERT）
+            dao.insert(customer);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        request.getRequestDispatcher("/views/register-out.jsp")
                 .forward(request, response);
-	}
-
+    }
 }

@@ -22,8 +22,15 @@
 		<div class="card">
 
 			<div class="action">
-				<button class="edit" type="submit">修正</button>
-				<button class="delete" type="submit">削除</button>
+				<form action="${pageContext.request.contextPath}/update/user-edit" method="get">
+				    <input type="hidden" name="member_id" value="${customer.member_id}">
+				    <input type="submit" class="edit" value="修正">
+				</form>
+				
+				<form action="${pageContext.request.contextPath}/update/user-delete" method="post">
+					<input type="hidden" name="member_id" value="${customer.member_id}">
+				    <input type="submit" class="delete" value="削除" onclick="return confirm('本当に削除しますか？');">
+				</form>
 			</div>
 
 

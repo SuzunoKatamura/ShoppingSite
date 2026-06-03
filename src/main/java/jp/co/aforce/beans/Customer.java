@@ -8,6 +8,7 @@ public class Customer implements java.io.Serializable {
 	private String first_name;
 	private String address;
 	private String mail_address;
+	private String username;
 	
 	public String getMember_id() {
 		return member_id;
@@ -33,6 +34,10 @@ public class Customer implements java.io.Serializable {
 		return mail_address;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+	
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
@@ -55,6 +60,10 @@ public class Customer implements java.io.Serializable {
 	
 	public void setMail_address(String mail_address) {
 		this.mail_address = mail_address;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

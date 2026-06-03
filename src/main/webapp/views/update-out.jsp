@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/register-out.css">
-<title>Confirmed</title>
+<!--<meta http-equiv="refresh" content="3;url=http://localhost:8080/ShoppingSite/LoginAction/login">-->
+<link rel="stylesheet" href="../css/update-out.css">
+<title>Updated</title>
 </head>
 
 <body>
@@ -26,8 +27,7 @@
       </div>
     </div>
 
-<h2>登録が完了しました</h2>
+<h2>会員情報の更新が完了しました</h2>
 
-<script src="../js/register-out.js"></script>
 </body>
 </html>
