@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ page import="jakarta.servlet.http.Cookie" %>
+<%@ page import="jakarta.servlet.http.Cookie"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +14,9 @@
 	<div class="card">
 		<h2>Welcome</h2>
 
-		<form id="loginForm" action="/ShoppingSite/LoginAction/login" method="post" onsubmit="return validateForm()">
-			
+		<form id="loginForm" action="/ShoppingSite/LoginAction/login"
+			method="post" onsubmit="return validateForm()">
+
 			<%
 			String savedId = "";
 
@@ -29,21 +30,23 @@
 				}
 			}
 			%>
-			
+
 			<div>
-				<label>メンバーID</label> 
-				<input type="text" name="member_id" value="<%=savedId%>">
+				<label>メンバーID</label> <input type="text" id = "member_id" name="member_id"
+					value="<%=savedId%>">
 			</div>
 
 			<br>
 
 			<div class="password-wrapper">
-				<label>パスワード</label> <input type="password" id="password" name="password">
+				<label>パスワード</label> <input type="password" id="password"
+					name="password">
 
 				<p id="error-message"></p>
 
 				<button type="button" id="togglePassword" class="eye-button">
-					<img id="eyeIcon" src="../img/eye-slash-regular-full.svg" alt="password">
+					<img id="eyeIcon" src="../img/eye-slash-regular-full.svg"
+						alt="password">
 				</button>
 			</div>
 
@@ -56,7 +59,8 @@
 			<br>
 
 			<button class="primary" type="submit">Login</button>
-			<button class="secondary" type="button">新規会員登録</button>
+			<button class="secondary" type="button"
+				onclick="location.href='${pageContext.request.contextPath}/views/register.jsp'">新規会員登録</button>
 		</form>
 
 	</div>

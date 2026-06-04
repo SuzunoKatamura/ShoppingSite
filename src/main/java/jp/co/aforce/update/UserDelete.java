@@ -25,12 +25,19 @@ public class UserDelete extends HttpServlet {
         CustomerDAO dao = new CustomerDAO();
 
         try {
+        	//  DBからデータを完全に削除
             dao.delete(memberId);
+            
+            // セッションを削除
+            jakarta.servlet.http.HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate(); 
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        request.getRequestDispatcher("/views/delete-out.jsp")
-               .forward(request, response);
+        
+        //  リダイレクトで入力データを引き継がせない
+        response.sendRedirect(request.getContextPath() + "/views/delete-out.jsp");
     }
 }

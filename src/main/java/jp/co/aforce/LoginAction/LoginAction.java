@@ -39,6 +39,8 @@ public class LoginAction extends HttpServlet {
 				
 				response.addCookie(cookie);
 			}
+			
+			// 管理者を振り分けるコードを後で入れる
 
 				if (customer != null) {
 					session.setAttribute("customer", customer);

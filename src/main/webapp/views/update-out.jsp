@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--<meta http-equiv="refresh" content="3;url=http://localhost:8080/ShoppingSite/LoginAction/login">-->
+<meta http-equiv="refresh" content="3;url=${pageContext.request.contextPath}/views/user-menu.jsp">
 <link rel="stylesheet" href="../css/update-out.css">
 <title>Updated</title>
 </head>

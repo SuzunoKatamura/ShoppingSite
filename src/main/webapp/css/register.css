@@ -30,6 +30,25 @@ form p {
     margin-bottom: 32px;
 }
 
+/* --- リアルタイム重複チェック用の横並びスタイル --- */
+
+/* ラベルとメッセージを横並びにする設定 */
+.label-group {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-end;      
+    gap: 6px;                  
+}
+
+/* メッセージ自体の見た目 */
+.id-check-text {
+    font-size: 13px;             
+/*    font-weight: bold;          */
+    display: inline-block;
+    height: 18px;               
+    line-height: 18px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -49,12 +68,19 @@ input[type="email"] {
                 inset -4px -4px 8px #ffffff;
 }
 
+/* エラーメッセージ */
 .error {
     color: #ff4d4d;
     text-align: center;
     margin: 10px 0 20px;
     font-size: 16px;
-	min-height: 32px;
+	min-height: 96px;
+}
+
+/* エラー時の入力欄 */
+.input-error {
+    background-color: #ffeded !important; /* ほんのり薄い赤 */
+    border: 1px solid #ff4d4d !important;  /* 枠線も少し赤くする */
 }
 
 /* ボタン */
@@ -73,7 +99,6 @@ input[type="submit"] {
     box-shadow: 4px 4px 8px #d1d9e6,
                 -4px -4px 8px #ffffff;
     transition: 0.2s;
-/*	transform: translateY(30px);*/
 
 	cursor: pointer;
 }

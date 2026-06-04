@@ -1,6 +1,8 @@
 package jp.co.aforce.confirm;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -44,29 +46,34 @@ public class UserInsert extends HttpServlet {
         CustomerDAO dao = new CustomerDAO();
         
         try {
+            // エラーを詰めるリスト
+            List<String> errors = new ArrayList<>();
+
             // 1. 会員IDの重複チェック
             if (dao.isMemberIdExists(memberId)) {
-                request.setAttribute("errorMsg", "この会員IDは既に登録されています。");
-                // 登録画面（入力フォームがあるJSP）のパスに戻す
-                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
-                return; // 登録処理に進ませず、ここで処理を終了する
+                errors.add("この会員IDは既に登録されています。");
             }
             
             // 2. メールアドレスの重複チェック
             if (dao.isEmailExists(mailAddress)) {
-                request.setAttribute("errorMsg", "このメールアドレスは既に登録されています。");
-                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
-                return;
+                errors.add("このメールアドレスは既に登録されています。");
             }
             
             // 3. ユーザーネームの重複チェック
-//            if (dao.isUsernameExists(username)) {
-//                request.setAttribute("errorMsg", "このユーザーネームは既に使われています。");
-//                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
-//                return;
-//            }
+            // if (dao.isUsernameExists(username)) {
+            //     errors.add("このユーザーネームは既に使われています。");
+            // }
 
-            // すべてのチェックを通過したら、DBへ挿入（INSERT）
+            // もし重複エラーが1つでも入っていたら、登録画面に戻す
+            if (!errors.isEmpty()) {
+                request.setAttribute("errors", errors); // JSPが待っている "errors" という名前で送る
+                request.setAttribute("customer", customer); // 入力データを保持して戻す
+
+                request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+                return; 
+            }
+
+            // すべてのチェックを通過したら、DBへ挿入
             dao.insert(customer);
 
         } catch (Exception e) {

@@ -1,195 +1,203 @@
 @charset "UTF-8";
 
-body{
-    margin: 0;
-    height: 100vh;
+body {
+	margin: 0;
+	height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    background: #ECF0F3;
-    font-family: sans-serif;
+	background: #ECF0F3;
+	font-family: sans-serif;
 }
 
 /* フェードイン */
-.fade-in{
-    animation: fadeIn 0.8s ease;
+.fade-in {
+	animation: fadeIn 0.8s ease;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity: 0;
-        transform: translateY(10px);
-    }
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* カード */
-.card{
-    width: 400px;
-    padding: 50px;
+.card {
+	width: 400px;
+	padding: 50px;
 
-    border-radius: 30px;
-    background: #ECF0F3;
+	border-radius: 30px;
+	background: #ECF0F3;
 
-    box-shadow:
-        18px 18px 30px #d1d9e6,
-       -18px -18px 30px #ffffff;
+	box-shadow:
+		18px 18px 30px #d1d9e6,
+		-18px -18px 30px #ffffff;
 }
 
 /* Welcome */
-h2{
-    text-align: center;
-    margin-bottom: 40px;
+h2 {
+	text-align: center;
+	margin-bottom: 40px;
 
-    font-size: 36px;
-    color: #555;
+	font-size: 36px;
+	color: #555;
 }
 
 /* ラベル */
-label{
-    display: block;
-    margin-bottom: 10px;
+label {
+	display: block;
+	margin-bottom: 10px;
 
-    color: #666;
-    font-weight: bold;
+	color: #666;
+	font-weight: bold;
 }
 
 /*パスワード表示切替*/
-.password-wrapper{
-    position: relative;
-    width: 100%;
+.password-wrapper {
+	position: relative;
+	width: 100%;
 }
 
-.password-wrapper input{
-    width: 100%;
-    padding-right: 50px;
-    box-sizing: border-box;
+.password-wrapper input {
+	width: 100%;
+	padding-right: 50px;
+	box-sizing: border-box;
 }
 
-.eye-button{
-    width: auto;
-    height: auto;
-    margin: 0;
-    padding: 0;
+.eye-button {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
 
-    position: absolute;
-    right: 15px;
+	position: absolute;
+	right: 15px;
 	top: 55%;
 	transform: translateY(-80%);
 
-    background: none;
-    box-shadow: none;
+	background: none;
+	box-shadow: none;
 }
 
-.eye-button img{
-    width: 20px;
-    height: 20px;
-    display: block;
+.eye-button img {
+	width: 20px;
+	height: 20px;
+	display: block;
 	opacity: 0.4;
 }
 
 /*入力チェックのメッセージ*/
-#error-message{
-    min-height: 20px;
+#error-message {
+	min-height: 20px;
 
-    margin-top: 15px;
+	margin-top: 15px;
 
-    color: #d9534f;
-    font-size: 14px;
-    text-align: center;
+	color: #d9534f;
+	font-size: 14px;
+	text-align: center;
 }
+
+/* エラーが起きた入力欄に付けるクラス */
+.input-error {
+	background-color: #ffeded !important;
+	/* ほんのり薄い赤 */
+	border: 1px solid #d9534f !important;
+	/* 枠線も少し赤くする */
+}
+
 
 /* 入力欄 */
 input[type="text"],
-input[type="password"]{
-    width: 100%;
-    padding: 16px;
+input[type="password"] {
+	width: 100%;
+	padding: 16px;
 
-    border: none;
-    outline: none;
+	border: none;
+	outline: none;
 
-    border-radius: 15px;
-    background: #ECF0F3;
+	border-radius: 15px;
+	background: #ECF0F3;
 
-    box-sizing: border-box;
+	box-sizing: border-box;
 
-    font-size: 16px;
+	font-size: 16px;
 
-    box-shadow:
-        inset 6px 6px 12px #d1d9e6,
-        inset -6px -6px 12px #ffffff;
+	box-shadow:
+		inset 6px 6px 12px #d1d9e6,
+		inset -6px -6px 12px #ffffff;
 }
 
 /* ボタン共通 */
-button{
-    width: 100%;
-    padding: 15px;
+button {
+	width: 100%;
+	padding: 15px;
 
-    margin-top: 20px;
+	margin-top: 20px;
 
-    border: none;
-    outline: none;
+	border: none;
+	outline: none;
 
-    border-radius: 15px;
+	border-radius: 15px;
 
-    background: #ECF0F3;
+	background: #ECF0F3;
 
-    font-size: 16px;
-    font-weight: bold;
+	font-size: 16px;
+	font-weight: bold;
 
-    cursor: pointer;
-    transition: 0.2s;
+	cursor: pointer;
+	transition: 0.2s;
 
-    box-shadow:
-        6px 6px 12px #d1d9e6,
-       -6px -6px 12px #ffffff;
+	box-shadow:
+		6px 6px 12px #d1d9e6,
+		-6px -6px 12px #ffffff;
 }
 
 /* ホバー */
-button:not(.eye-button):hover{
-    transform: translateY(-2px);
+button:not(.eye-button):hover {
+	transform: translateY(-2px);
 }
 
 /* 押した時 */
-button:not(.eye-button):active{
-    box-shadow:
-        inset 4px 4px 8px #d1d9e6,
-        inset -4px -4px 8px #ffffff;
+button:not(.eye-button):active {
+	box-shadow:
+		inset 4px 4px 8px #d1d9e6,
+		inset -4px -4px 8px #ffffff;
 }
 
 /* ログインボタン */
-.primary{
-    color: #4A6CF7;
+.primary {
+	color: #4A6CF7;
 }
 
 /* 新規会員登録ボタン */
-.secondary{
-    color: #777;
+.secondary {
+	color: #777;
 }
 
 /*クッキー*/
-.remember label{
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.remember label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
 
-    margin-bottom: 0;
+	margin-bottom: 0;
 
-    font-size: 12px;
-    font-weight: bold;
-    color: #777;
+	font-size: 12px;
+	font-weight: bold;
+	color: #777;
 }
 
-.remember input[type="checkbox"]{
-    margin: 0;
+.remember input[type="checkbox"] {
+	margin: 0;
 	width: 14px;
 	height: 14px;
 	transform: translateY(1px);
 }
-

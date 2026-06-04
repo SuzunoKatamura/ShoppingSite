@@ -22,3 +22,129 @@ h2 {
     padding: 30px 40px;
     border-radius: 20px;
 }
+
+/*チェックアニメーション*/
+.content-bg-check {
+        background: #ECF0F3;
+     }
+     .circle {
+       position: relative;
+       border-radius: 50%;
+       width: 80px;
+       height: 80px;
+       box-shadow: inset 0 0 0 2px #4A6CF7;
+
+       --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035); /* easeInExpo */
+       --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1); /* easeOutExpo */
+
+       --circle-bg-color: #ECF0F3; /* 背景色に合わせて変更してください */
+
+       &.animation {
+         animation: circle-filling-animation 0.3s ease 1.2s forwards;
+
+         .circle-cover-1::before {
+           animation: circle-draw-animation 0.4s var(--ease-in-expo) 0.4s
+             forwards;
+         }
+
+         .circle-cover-2::before {
+           animation: circle-draw-animation 0.4s var(--ease-out-expo) 0.8s
+             forwards;
+         }
+         .circle-illust {
+           animation: circle-check-animation 0.9s 1.4s forwards;
+           /* ぽよんぽよんする動き */
+           animation-timing-function: linear(
+             0,
+             1.32,
+             0.87,
+             1.05,
+             0.98,
+             1.01,
+             1,
+             1
+           );
+         }
+       }
+     }
+
+     .circle-cover-1,
+     .circle-cover-2 {
+       position: absolute;
+       overflow: hidden;
+       width: 50%;
+       height: 100%;
+
+       &::before,
+       &::before {
+         position: absolute;
+         content: "";
+       }
+     }
+
+     .circle-cover-1 {
+       left: 50%;
+
+       &:before {
+         width: 100%;
+         height: 200%;
+         background: var(--circle-bg-color);
+         transform-origin: 0 25%;
+       }
+     }
+
+     .circle-cover-2::before {
+       left: -10%;
+       width: 110%;
+       height: 120%;
+       background: var(--circle-bg-color);
+       transform-origin: 100% 40%;
+     }
+     .circle-illust {
+       --size: 64px;
+       position: absolute;
+       width: var(--size);
+       height: var(--size);
+       color: var(--circle-bg-color);
+       top: calc(50% - var(--size) / 2);
+       left: calc(50% - var(--size) / 2);
+       transform-origin: 50% 50%;
+       opacity: 0;
+       svg {
+         width: 100%;
+         height: 100%;
+       }
+     }
+
+     /* 円を描くアニメーション */
+     @keyframes circle-draw-animation {
+       0% {
+         transform: rotate(0deg);
+       }
+       100% {
+         transform: rotate(180deg);
+       }
+     }
+
+     /* 塗りのアニメーション */
+     @keyframes circle-filling-animation {
+       0% {
+         box-shadow: inset 0 0 0 9px #4A6CF7;
+       }
+       100% {
+         box-shadow: inset 0 0 0 50px #4A6CF7;
+       }
+     }
+
+     /* チェックマークのアニメーション */
+
+     @keyframes circle-check-animation {
+       0% {
+         transform: scale(0) rotate(-10deg);
+         opacity: 0;
+       }
+       100% {
+         transform: scale(1) rotate(0deg);
+         opacity: 1;
+       }
+     }

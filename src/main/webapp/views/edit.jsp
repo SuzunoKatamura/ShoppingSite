@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,40 +9,52 @@
 </head>
 
 <body>
-<h2>会員情報編集</h2>
 
-<form action="${pageContext.request.contextPath}/update/user-update" method="post">
 
-    <input type="hidden" name="member_id" value="${customer.member_id}">
+	<div class="container">
 
-    <p>
-        パスワード<br>
-        <input type="password" name="password" value="${customer.password}">
-    </p>
+		<h2>会員情報編集</h2>
 
-    <p>
-        姓<br>
-        <input type="text" name="last_name" value="${customer.last_name}">
-    </p>
+		<form action="${pageContext.request.contextPath}/update/user-update"
+			method="post">
 
-    <p>
-        名<br>
-        <input type="text" name="first_name" value="${customer.first_name}">
-    </p>
+			<input type="hidden" name="member_id" value="${customer.member_id}">
 
-    <p>
-        住所<br>
-        <input type="text" name="address" value="${customer.address}">
-    </p>
+			<p>
+				パスワード<br> <input type="password" name="password"
+					value="${customer.password}">
+			</p>
 
-    <p>
-        メールアドレス<br>
-        <input type="email" name="mail_address" value="${customer.mail_address}">
-    </p>
+			<p>
+				姓<br> <input type="text" name="last_name"
+					value="${customer.last_name}">
+			</p>
 
-    <input type="submit" value="更新する">
+			<p>
+				名<br> <input type="text" name="first_name"
+					value="${customer.first_name}">
+			</p>
 
-</form>
+			<p>
+				住所<br> <input type="text" name="address"
+					value="${customer.address}">
+			</p>
 
+			<p>
+				メールアドレス<br> <input type="email" name="mail_address"
+					value="${customer.mail_address}">
+			</p>
+
+			<div id="errorView" class="error">
+				<c:forEach var="err" items="${errors}">
+					<div>${err}</div>
+				</c:forEach>
+			</div>
+
+			<input type="submit" value="更新する">
+
+		</form>
+
+	</div>
 </body>
 </html>

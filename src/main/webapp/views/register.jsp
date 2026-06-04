@@ -44,41 +44,50 @@
 
 		</div>
 
-		<form action="/ShoppingSite/confirm/user-confirm" method="post">
-
-			<p>
-				メンバーID*<br> <input type="text" name="member_id"  value="${customer.member_id}" required>
-			</p>
-
-			<p>
-				パスワード*<br> <input type="password" name="password" required>
-			</p>
-
-			<p>
-				姓*<br> <input type="text" name="last_name"  value="${customer.last_name}" required>
-			</p>
-
-			<p>
-				名*<br> <input type="text" name="first_name"  value="${customer.first_name}" required>
-			</p>
-
-			<p>
-				住所<br> <input type="text" name="address" value="${customer.address}">
-			</p>
-
-			<p>
-				メールアドレス*<br> <input type="email" name="mail_address" value="${customer.mail_address}" required>
-			</p>
-			
-			<div class="error">${error}</div>
-
-			<p>
-				<input type="submit" value="新規会員登録する">
-			</p>
-
+		<form id="registerForm" action="/ShoppingSite/confirm/user-confirm" method="post" onsubmit="return validateForm()" >
+		
+		    <p>
+		        <span class="label-group">
+		            <label>メンバーID*</label>
+		            <span id="id-check-msg" class="id-check-text"></span>
+		        </span>
+		        <input type="text" id="member_id" name="member_id" value="${customer.member_id}" onblur="checkIdDuplicate()">
+		    </p>
+		
+		    <p>
+		        パスワード*<br> <input type="password" id="password" name="password">
+		    </p>
+		
+		    <p>
+		        姓*<br> <input type="text" id="last_name" name="last_name" value="${customer.last_name}">
+		    </p>
+		
+		    <p>
+		        名*<br> <input type="text" id="first_name" name="first_name" value="${customer.first_name}">
+		    </p>
+		
+		    <p>
+		        住所<br> <input type="text" name="address" value="${customer.address}">
+		    </p>
+		
+		    <p>
+		        メールアドレス*<br> <input type="text" id="mail_address" name="mail_address" value="${customer.mail_address}">
+		    </p>
+		    
+		    <div id="errorView" class="error">
+		        <c:forEach var="err" items="${errors}">
+		            <div>${err}</div>
+		        </c:forEach>
+		    </div>
+		
+		    <p>
+		        <input type="submit" value="新規会員登録する">
+		    </p>
+		
 		</form>
 
 	</div>
 
+	<script src="../js/register.js"></script>
 </body>
 </html>

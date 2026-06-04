@@ -12,48 +12,39 @@ function login() {
 	}, 400);
 }
 
-//function goRegister() {
-//	document.body.classList.add("fade-out");
-//
-//	setTimeout(() => {
-//		location.href = "register.jsp";
-//	}, 400);
-//}
 
 //	入力チェック (空欄の場合は送信しない)
 function validateForm() {
-	const id = document.querySelector(
-		"input[name='member_id']"
-	);
-
-	const password = document.querySelector(
-		"input[name='password']"
-	);
-
-	const error = document.getElementById(
-		"error-message"
-	);
+	
+	const id = document.getElementById("member_id");
+	const password = document.getElementById("password");
+	const error = document.getElementById("error-message");
 
 	const idValue = id.value.trim();
 	const passwordValue = password.value.trim();
 
+	// 入力欄のエラー色を一旦リセット（白に戻す）
+	id.classList.remove("input-error");
+	password.classList.remove("input-error");
 	error.textContent = "";
 
-	if(idValue === "" && passwordValue === ""){
-	    error.textContent =
-	        "会員IDとパスワードを入力してください";
+	// 判定と同時に、エラーの入力欄を赤く染める
+	if (idValue === "" && passwordValue === "") {
+		error.textContent = "会員IDとパスワードを入力してください";
+		id.classList.add("input-error");       // IDを赤く
+		password.classList.add("input-error"); // パスワードも赤く
 
-	} else if(idValue === ""){
-	    error.textContent =
-	        "会員IDを入力してください";
+	} else if (idValue === "") {
+		error.textContent = "会員IDを入力してください";
+		id.classList.add("input-error");       // IDだけを赤く
 
-	} else if(passwordValue === ""){
-	    error.textContent =
-	        "パスワードを入力してください";
+	} else if (passwordValue === "") {
+		error.textContent = "パスワードを入力してください";
+		password.classList.add("input-error"); // パスワードだけを赤く
 
 	} else {
-
-	    login();
+		// エラーがなければフェードアウトして送信
+		login();
 	}
 
 	return false;

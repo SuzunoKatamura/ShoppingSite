@@ -1,6 +1,8 @@
 package jp.co.aforce.confirm;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,19 +39,37 @@ public class UserConfirm extends HttpServlet {
         String password = request.getParameter("password");
         String mail = request.getParameter("mail_address");
 
-        String error = null;
+        // エラーメッセージを複数詰め込めるリスト
+        List<String> errors = new ArrayList<>();
 
+        // 1. メンバーIDのチェック
         if (memberId == null || memberId.isBlank()) {
-            error = "メンバーIDを入力してください";
-        } else if(password == null || password.length() > 10){
-            error = "パスワードは10文字以内で入力してください";
-        } else if (mail == null || !mail.contains("@")) {
-            error = "メール形式が正しくありません";
+            errors.add("メンバーIDを入力してください");
+        } else if (!memberId.matches("^[a-zA-Z0-9]+$")) {
+            errors.add("メンバーIDは半角英数字のみで入力してください");
         }
-        
-        if (error != null) {
 
-            request.setAttribute("error", error);
+        // 2. パスワードのチェック
+        if (password == null || password.isBlank()) {
+            errors.add("パスワードを入力してください");
+        } else if (password.length() > 10) {
+            errors.add("パスワードは10文字以内で入力してください");
+        } else if (!password.matches("^[a-zA-Z0-9]+$")) {
+            errors.add("パスワードは半角英数字のみで入力してください");
+        }
+
+        // 3. メールのチェック
+        if (mail == null || mail.isBlank()) {
+            errors.add("メールアドレスを入力してください");
+        } else if (!mail.contains("@")) {
+            errors.add("メール形式が正しくありません");
+        }
+
+        // リストの中にエラーが1個でも入っていたら画面を戻す
+        if (!errors.isEmpty()) {
+
+            // "errors" という名前でリストをJSPに渡す
+            request.setAttribute("errors", errors);
             request.setAttribute("customer", customer);
 
             request.getRequestDispatcher("/views/register.jsp")
@@ -59,7 +79,6 @@ public class UserConfirm extends HttpServlet {
         }
 
         request.setAttribute("customer", customer);
-
         request.getRequestDispatcher("/views/user-confirm.jsp")
                 .forward(request, response);
 		

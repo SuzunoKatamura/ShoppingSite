@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="refresh" content="3;url=${pageContext.request.contextPath}/views/login-in.jsp">
 <link rel="stylesheet" href="../css/register-out.css">
 <title>Confirmed</title>
 </head>

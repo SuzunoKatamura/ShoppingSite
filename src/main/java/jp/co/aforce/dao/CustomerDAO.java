@@ -33,27 +33,32 @@ public class CustomerDAO extends DAO {
 
 	}
 
-	//	会員登録処理
+	// 会員登録処理
 	public int insert(Customer c) throws Exception {
 
-		Connection con = getConnection();
+	    Connection con = getConnection();
 
-		PreparedStatement st = con.prepareStatement(
-				"INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)");
+	    // ★重要：入れる対象のカラム名（6個）をハッキリ指定する書き方に変更！
+	    PreparedStatement st = con.prepareStatement(
+	    		"INSERT INTO users (member_id, password, last_name, first_name, address, mail_address, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-		st.setString(1, c.getMember_id());
-		st.setString(2, c.getPassword());
-		st.setString(3, c.getLast_name());
-		st.setString(4, c.getFirst_name());
-		st.setString(5, c.getAddress());
-		st.setString(6, c.getMail_address());
+	    st.setString(1, c.getMember_id());
+	    st.setString(2, c.getPassword());
+	    st.setString(3, c.getLast_name());
+	    st.setString(4, c.getFirst_name());
+	    st.setString(5, c.getAddress());
+	    st.setString(6, c.getMail_address());
+	    
+	 // ② 7番目のハテナに、仮のデータ（"temporary" など）を強制的にセットする
+	    st.setString(7, "temporary");
 
-		st.executeUpdate();
-		int result = st.executeUpdate();
+	    // ★重要：実行は1回だけに修正して、結果を直接受け取る
+	    int result = st.executeUpdate();
 
-		st.close();
-		con.close();
-		return result;
+	    st.close();
+	    con.close();
+	    
+	    return result;
 	}
 
 	//	会員情報修正処理
@@ -116,7 +121,7 @@ public class CustomerDAO extends DAO {
 
 		// member_id を条件に1件削除するSQL
 		PreparedStatement st = con.prepareStatement(
-				"DELETE FROM users WHERE member_id = ?");
+				"DELETE FROM users WHERE MEMBER_ID = ?");
 
 		st.setString(1, memberId);
 
