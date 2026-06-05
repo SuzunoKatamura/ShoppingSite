@@ -43,7 +43,7 @@
 	
 	</div>
 
-	<div class="confirm-item"><span>会員ID</span> ${customer.member_id}</div>
+	<div class="confirm-item"><span>メンバーID</span> ${customer.member_id}</div>
 	<div class="confirm-item"><span>パスワード</span> ${customer.password}</div>
 	<div class="confirm-item"><span>姓</span> ${customer.last_name}</div>
 	<div class="confirm-item"><span>名</span> ${customer.first_name}</div>

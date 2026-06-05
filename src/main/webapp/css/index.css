@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+body {
+	background: #ECF0F3;
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+/* ファーストビュー全体の枠（画面サイズに合わせる） */
+.first-view {
+	position: relative;
+	width: 100%;
+	height: 60vh;
+	/* 画面の高さの6割を確保（お好みで100vhで全画面にしてもOK） */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background-color: #e0e8f0;
+	/* 全体と統一 */
+}
+
+/* ★ Blobが後から入るスペース */
+.blob-space-holder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+
+	/* 今は仮として、中央が少し明るい静かなグラデーションを敷いておきます */
+	background: radial-gradient(circle at center, #edf2f7 0%, #e0e8f0 70%);
+}
+
+/* キャッチコピーなどの文字レイヤー（Blobより手前に出す） */
+.fv-content {
+	position: relative;
+	z-index: 2;
+	/* z-indexをBlob(1)より高くして手前に配置 */
+	text-align: center;
+}
+
+.catchphrase {
+	font-size: 2.5rem;
+	letter-spacing: 0.2em;
+	color: #2d3748;
+	margin-bottom: 10px;
+	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+	/* 文字を少し見やすく */
+}
+
+.fv-sub {
+	font-size: 1rem;
+	letter-spacing: 0.1em;
+	color: #718096;
+}
+
+/* style.css の該当部分を上書き */
+.main-container {
+	max-width: 1200px;
+	margin: 60px auto;
+	padding: 0 20px;
+	display: flex;
+	/* 横並びの魔法 */
+	flex-direction: row;
+	/* 明示的に横並びを指定 */
+	gap: 40px;
+	/* サイドバーと一覧の間の余白 */
+	align-items: flex-start;
+	/* 中身の高さが違っても上に揃える */
+}
+
+/* --- 1. カラム自体はフラットにする（引き算） --- */
+.sidebar {
+	width: 280px;
+	flex-shrink: 0;
+	padding: 30px;
+	background: transparent;
+	/* 背景に溶け込ませてフラットに */
+	box-shadow: none;
+	/* 影をなくしてすっきり見せる */
+	border-right: 1px solid #e2e8f0;
+	/* 境界線だけうっすら入れると無機質さが出ます */
+}
+
+/* --- 2. 商品カードは「白ベースで綺麗に浮いているカード」に（見やすさ重視） --- */
+.product-card {
+	background: #ffffff;
+	/* パキッと白にしてカード内の文字を読みやすく */
+	border-radius: 20px;
+	padding: 16px;
+	/* ニューモーフィズムの激しい影ではなく、モダンですっきりした浮遊感のある影 */
+	box-shadow: 0 10px 25px rgba(184, 198, 209, 0.3);
+	transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+	cursor: pointer;
+}
+
+/* カードのホバー：さらにフワッと浮き上がる */
+.product-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 20px 35px rgba(184, 198, 209, 0.5);
+}
+
+/* カードの中のサムネイル */
+.product-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 確実に「3列」に固定！ */
+    gap: 30px;
+}
+
+/* 商品カード内のサムネイル（画像スペース）を「正方形」にする技 */
+.product-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* これを書くだけで、縦横比が完全な正方形（1:1）になります！ */
+    background-color: #edf2f7;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+/* --- 3. ボタン系だけは「凸のニューモーフィズム」にしてマシンのスイッチ感を出す --- */
+.neu-btn-circle {
+	background: #f4f7f9;
+	/* 背景と同じ色にすることで、一体化して浮き出る */
+	color: #4a5568;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 40px;
+	/* 丸みのあるスイッチ */
+	font-weight: 500;
+	cursor: pointer;
+	/* 左上に白、右下にグレーの影を落としてしっかり立体感を出す */
+	box-shadow: 6px 6px 12px #d1d9e0,
+		-6px -6px 12px #ffffff;
+	transition: all 0.2s ease;
+}
+
+/* ボタンを押した瞬間：カチッと沈み込む（凹） */
+.neu-btn-circle:active {
+	box-shadow: inset 4px 4px 8px #d1d9e0,
+		inset -4px -4px 8px #ffffff;
+	transform: scale(0.98);
+	/* ほんの少し小さくしてクリック感を強調 */
+}
+
+
+
+
+/* --- 4. 閲覧履歴エリアのスタイル --- */
+.history-section {
+	background-color: #f4f7f9;
+	/* 背景は共通のフラットグレー */
+	padding: 80px 0;
+	/* 上下にしっかり余白をとってメインと区切る */
+	border-top: 1px solid #e2e8f0;
+	/* うっすら境界線 */
+}
+
+.history-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.history-title {
+	font-size: 1.25rem;
+	color: #4a5568;
+	margin-bottom: 30px;
+	letter-spacing: 0.05em;
+}
+
+.history-subtitle {
+	font-size: 0.8rem;
+	color: #a0aec0;
+	font-weight: normal;
+	margin-left: 10px;
+}
+
+/* 履歴カードを横並びにするグリッド（4列まで並ぶ設定） */
+.history-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 20px;
+}
+
+/* 履歴カード：メインのカードより小ぶりでシンプルな浮き方 */
+.history-card {
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 12px;
+	box-shadow: 0 4px 15px rgba(184, 198, 209, 0.2);
+	/* 影を少し控えめに */
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.history-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 20px rgba(184, 198, 209, 0.4);
+}
+
+/* 履歴のサムネイル（小さめ） */
+.history-thumb {
+	height: 120px;
+	background-color: #edf2f7;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 12px;
+}
+
+.history-thumb-text {
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+	color: #cbd5e0;
+}
+
+/* 履歴の情報文 */
+.history-name {
+	font-size: 0.9rem;
+	color: #2d3748;
+	margin-bottom: 6px;
+	white-space: nowrap;
+	/* 文字が溢れたら「...」にする準備 */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.history-date {
+	font-size: 0.75rem;
+	color: #a0aec0;
+}

@@ -33,14 +33,14 @@
 
 			<div>
 				<label>メンバーID</label> <input type="text" id = "member_id" name="member_id"
-					value="<%=savedId%>">
+					value="<%=savedId%>" placeholder="半角英数字で入力してください">
 			</div>
 
 			<br>
 
 			<div class="password-wrapper">
 				<label>パスワード</label> <input type="password" id="password"
-					name="password">
+					name="password" placeholder="半角英数字で入力してください">
 
 				<p id="error-message"></p>
 

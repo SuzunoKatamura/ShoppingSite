@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* カート画面専用の簡単なレイアウト調整 */
+.cart-container {
+	max-width: 800px;
+	margin: 60px auto;
+	padding: 0 20px;
+}
+
+.cart-title {
+	font-size: 1.5rem;
+	color: #4a5568;
+	margin-bottom: 40px;
+	letter-spacing: 0.05em;
+}
+
+.cart-item {
+	display: flex;
+	align-items: center;
+	background: #ffffff;
+	border-radius: 20px;
+	padding: 20px;
+	box-shadow: 0 10px 25px rgba(184, 198, 209, 0.3);
+	margin-bottom: 20px;
+}
+
+.cart-thumb-sm {
+	width: 100px;
+	height: 100px;
+	background-color: #edf2f7;
+	border-radius: 12px;
+	flex-shrink: 0;
+}
+
+.cart-item-info {
+	flex-grow: 1;
+	padding: 0 20px;
+}
+
+.cart-item-title {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.cart-item-type {
+	font-size: 0.8rem;
+	color: #a0aec0;
+}
+
+.cart-item-price {
+	font-weight: bold;
+	color: #4a5568;
+	font-size: 1.1rem;
+}
+
+.cart-summary {
+	margin-top: 40px;
+	text-align: right;
+	padding: 30px;
+	border-top: 1px solid #e2e8f0;
+}
+
+.total-price {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: #2d3748;
+	margin-bottom: 20px;
+}
+
+.checkout-btn {
+	font-size: 1.1rem;
+	padding: 15px 40px;
+}

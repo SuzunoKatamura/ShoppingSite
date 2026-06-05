@@ -51,12 +51,17 @@
 		            <label>メンバーID*</label>
 		            <span id="id-check-msg" class="id-check-text"></span>
 		        </span>
-		        <input type="text" id="member_id" name="member_id" value="${customer.member_id}" onblur="checkIdDuplicate()">
+		        <input type="text" id="member_id" name="member_id" value="${customer.member_id}" onblur="checkIdDuplicate()" placeholder="半角英数字で入力してください">
 		    </p>
 		
-		    <p>
-		        パスワード*<br> <input type="password" id="password" name="password">
-		    </p>
+		    <p class="password-wrapper">
+		    	パスワード*<br>
+				<input type="password" id="password" name="password" placeholder="半角英数字で入力してください">
+				<button type="button" id="registerTogglePassword" class="register-eye-button">
+					<img id="registerEyeIcon" src="../img/eye-slash-regular-full.svg"
+						alt="password">
+				</button>
+			</p>
 		
 		    <p>
 		        姓*<br> <input type="text" id="last_name" name="last_name" value="${customer.last_name}">
@@ -71,7 +76,7 @@
 		    </p>
 		
 		    <p>
-		        メールアドレス*<br> <input type="text" id="mail_address" name="mail_address" value="${customer.mail_address}">
+		        メールアドレス*<br> <input type="text" id="mail_address" name="mail_address" value="${customer.mail_address}" placeholder="example@email.com">
 		    </p>
 		    
 		    <div id="errorView" class="error">

@@ -20,9 +20,13 @@
 
 			<input type="hidden" name="member_id" value="${customer.member_id}">
 
-			<p>
-				パスワード<br> <input type="password" name="password"
-					value="${customer.password}">
+		    <p class="password-wrapper">
+		    	パスワード*<br>
+				<input type="password" id="password" name="password" placeholder="半角英数字で入力してください">
+				<button type="button" id="editTogglePassword" class="edit-eye-button">
+					<img id="editEyeIcon" src="../img/eye-slash-regular-full.svg"
+						alt="password">
+				</button>
 			</p>
 
 			<p>
@@ -42,7 +46,7 @@
 
 			<p>
 				メールアドレス<br> <input type="email" name="mail_address"
-					value="${customer.mail_address}">
+					value="${customer.mail_address}" placeholder="example@email.com">
 			</p>
 
 			<div id="errorView" class="error">
@@ -56,5 +60,7 @@
 		</form>
 
 	</div>
+	
+	<script src="../js/edit.js"></script>
 </body>
 </html>

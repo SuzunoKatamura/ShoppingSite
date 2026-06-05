@@ -15,7 +15,7 @@
 
         <h1 class="title">ログインに失敗しました</h1>
 
-        <p class="msg">IDもしくはパスワードが違います</p>
+        <p class="msg">メンバーIDもしくはパスワードが違います</p>
 
         <button class="btn" type="button"
             onclick="location.href='/ShoppingSite/views/login-in.jsp'">

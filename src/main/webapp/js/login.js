@@ -30,12 +30,12 @@ function validateForm() {
 
 	// 判定と同時に、エラーの入力欄を赤く染める
 	if (idValue === "" && passwordValue === "") {
-		error.textContent = "会員IDとパスワードを入力してください";
+		error.textContent = "メンバーIDとパスワードを入力してください";
 		id.classList.add("input-error");       // IDを赤く
 		password.classList.add("input-error"); // パスワードも赤く
 
 	} else if (idValue === "") {
-		error.textContent = "会員IDを入力してください";
+		error.textContent = "メンバーIDを入力してください";
 		id.classList.add("input-error");       // IDだけを赤く
 
 	} else if (passwordValue === "") {

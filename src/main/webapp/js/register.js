@@ -37,6 +37,9 @@ function validateForm() {
 	} else if (!alphaNumPattern.test(txtMemberId.value.trim())) {
 		errors.push("メンバーIDは半角英数字のみで入力してください");
 		txtMemberId.classList.add("input-error"); // 色をつける
+	} else if (isIdDuplicate) {
+		errors.push("このメンバーIDは既に登録されています");
+		txtMemberId.classList.add("input-error"); // 色をつける
 	}
 
 	// 2. パスワードのチェック
@@ -77,7 +80,7 @@ function validateForm() {
 			div.textContent = "・" + err;
 			errorView.appendChild(div);
 		});
-		return false; // これでJavaへの送信（画面遷移）が止まる！
+		return false; // これでJavaへの送信（画面遷移）が止まる
 	}
 
 	return true; // エラーがなければ無さにJavaへ送信
@@ -102,12 +105,13 @@ function checkIdDuplicate() {
 		.then(result => {
 			if (result === "NG") {
 				// 重複していた場合
-				msgSpan.textContent = "この会員IDは既に登録されています。";
+				isIdDuplicate = true;
+				msgSpan.textContent = "このメンバーIDは既に登録されています。";
 				msgSpan.style.color = "#ff4d4d"; // 赤文字
 				memberIdInput.classList.add("input-error"); // 入力欄を赤くする
 			} else if (result === "OK") {
 				// 使える場合
-				isIdDuplicate = false; // ★重複フラグを折る！
+				isIdDuplicate = false; // 重複フラグを折る
 				msgSpan.textContent = "この会員IDは使用可能です。";
 				msgSpan.style.color = "#2ed573"; // 緑文字
 				memberIdInput.classList.remove("input-error"); // 赤色を消す
@@ -117,3 +121,21 @@ function checkIdDuplicate() {
 			console.error("エラーが発生しました:", error);
 		});
 }
+
+
+//パスワードの表示切替
+const password = document.getElementById("password");
+const eyeButton = document.getElementById("registerTogglePassword");
+const eyeIcon = document.getElementById("registerEyeIcon");
+
+eyeButton.addEventListener("click", () => {
+
+	if (password.type === "password") {
+		password.type = "text";
+		eyeIcon.src = "../img/eye-regular-full.svg";
+	} else {
+		password.type = "password";
+		eyeIcon.src = "../img/eye-slash-regular-full.svg";
+	}
+
+});
