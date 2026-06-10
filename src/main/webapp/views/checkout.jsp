@@ -37,7 +37,7 @@
 		<div class="btn-area">
 			<button type="button" class="neu-btn-circle" onclick="history.back()">入力を修正する</button>
 			<button type="button" class="neu-btn-circle"
-				style="font-weight: bold;" onclick="location.href='thanks.html'">記憶を定着させる</button>
+				style="font-weight: bold;" onclick="location.href='cart-out.jsp'">記憶を定着させる</button>
 		</div>
 	</div>
 

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,27 +31,28 @@ public class LoginAction extends HttpServlet {
 
 			//			クッキー
 			String remember = request.getParameter("remember");
-			if ("on".equals(remember)) {
-				Cookie cookie = new Cookie("member_id", member_id);
-				
-				cookie.setMaxAge(60*60*24*30);
-				
-				response.addCookie(cookie);
-			}
-			
-			// 管理者を振り分けるコードを後で入れる
+			if (customer != null) {
+			    session.setAttribute("customer", customer);
 
-				if (customer != null) {
-					session.setAttribute("customer", customer);
+			    // セッションから戻り先（cart.jsp）のメモを取り出す
+			    String returnTarget = (String) session.getAttribute("returnTarget");
 
-					request.getRequestDispatcher("/views/user-menu.jsp")
-							.forward(request, response);
+			    if (returnTarget != null) {
+			        // メモがあった場合（カート画面から飛ばされてきた場合）
+			        session.removeAttribute("returnTarget"); // 使い終わったメモは消す
+			        
+			        // カート画面（cart.jsp）へリダイレクトする
+			        response.sendRedirect(request.getContextPath() + "/views/" + returnTarget);
+			    } else {
+			        // メモがない場合（普通にログインボタンから来た場合）
+			        // 今まで通りマイページへ
+			        request.getRequestDispatcher("/views/user-menu.jsp").forward(request, response);
+			    }
 
-				} else {
-
-					request.getRequestDispatcher("/views/login-error.jsp")
-							.forward(request, response);
-				}
+			} else {
+			    // ログイン失敗時（ここはそのまま）
+			    request.getRequestDispatcher("/views/login-error.jsp").forward(request, response);
+			    }
 
 		} catch (Exception e) {
 			e.printStackTrace();

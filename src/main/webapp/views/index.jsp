@@ -89,7 +89,9 @@
 	</section>
 
 	<!-- 商品詳細モーダル  -->
-	<div id="product-modal" class="modal-overlay" onmousedown="handleModalMouseDown(event)" onmouseup="handleModalMouseUp(event)">
+	<div id="product-modal" class="modal-overlay"
+		onmousedown="handleModalMouseDown(event)"
+		onmouseup="handleModalMouseUp(event)">
 
 		<a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false"
 			class="fullscreen-bg-scene"> <a-sky id="modal-sky" src=""
@@ -115,8 +117,14 @@
 							<span class="price-label">ACCESS PRICE</span> <span
 								id="modal-product-price" class="price-value">¥0</span>
 						</div>
-						<button type="submit" class="neu-btn-circle modal-cart-btn"
-							onclick="addToCart()">この記憶をカートに保存する</button>
+						<form action="${pageContext.request.contextPath}/cart/cart-add" method="post">
+
+							<input type="hidden" name="productId"
+								value="${product.productId}">
+
+							<button type="submit" class="neu-btn-circle modal-cart-btn">
+								この記憶をカートに保存する</button>
+						</form>
 					</div>
 				</div>
 

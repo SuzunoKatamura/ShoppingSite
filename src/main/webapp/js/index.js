@@ -235,7 +235,7 @@ function initBlobs() {
   canvas = document.getElementById('blob-canvas');
   if (!canvas) return;
   ctx = canvas.getContext('2d');
-  canvas.setAttribute('touch-action', 'none');
+  canvas.style.touchAction = 'none';
 
   let resize = function() {
     // コンテナの大きさにジャストフィットさせる
@@ -321,8 +321,8 @@ function initBlobs() {
     oldMousePoint.y = mouseY;
   }
   
-  window.addEventListener('pointermove', mouseMove);
+  canvas.addEventListener('pointermove', mouseMove);
 }
 
 // 起動
-window.addEventListener('DOMContentLoaded', initBlobs);
+window.addEventListener('load', initBlobs);

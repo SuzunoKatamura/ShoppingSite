@@ -2,6 +2,7 @@
 <!DOCTYPE configuration>
 <!-- 上記はEclipseの警告を消すための記述です。 -->
 
+<!--ローカル-->
 <Context reloadable="true">
 	<Resource
 		name="jdbc/shoppingsite_katamura"
@@ -13,3 +14,19 @@
 		password="suzuno0112"
 	/>
 </Context>
+
+
+
+
+<!--AWS-->
+<!--<Context reloadable="true">-->
+<!--	<Resource-->
+<!--		name="jdbc/shoppingsite_katamura"-->
+<!--		auth="Container"-->
+<!--		type="javax.sql.DataSource"-->
+<!--		driverClassName="com.mysql.cj.jdbc.Driver"-->
+<!--		url="jdbc:mysql://newemployeetraining2026forjava.crm2yqee80o7.ap-northeast-1.rds.amazonaws.com:3306/shoppingsite_katamura"-->
+<!--		username="admin"-->
+<!--		password="aforce2868"-->
+<!--	/>-->
+<!--</Context>-->
