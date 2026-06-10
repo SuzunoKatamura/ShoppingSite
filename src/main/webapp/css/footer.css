@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+/* フッター全体 */
+.site-footer {
+    width: 100%;
+    background-color:#ECF0F3;
+    padding: 64px 0;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* リンク */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;             
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    font-size: 0.85rem;
+    color: #718096;     
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+/* ホバー */
+.footer-links a:hover {
+    color: #4a5568;
+}
+
+/* コピーライト */
+.copyright {
+    font-size: 0.75rem;
+    color: #a0aec0;
+    letter-spacing: 0.08em;
+    margin: 0;
+    user-select: none;
+}

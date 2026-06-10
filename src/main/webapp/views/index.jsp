@@ -4,23 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/index.css">
+<!--天球用のリンク-->
+<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 <title>Residual Records</title>
 </head>
 <body>
-	<!-- 1. ヘッダー (将来的にインクルード化) -->
-	<header class="site-header">
-		<div class="logo">Residual Records</div>
-		<div class="header-menu">
-			<button class="neu-btn-circle">検索</button>
-			<button class="neu-btn-circle">カート</button>
-			<button class="neu-btn-circle">マイページ</button>
-		</div>
-	</header>
+	<!-- 1. ヘッダー  -->
+	<jsp:include page="header.jsp" />
 
 	<!-- 2. ファーストビュー (Blobの遊び場) -->
 	<section class="first-view">
-		<div class="blob-space-holder"></div>
+		<div class="blob-space-holder">
+			<canvas id="blob-canvas"></canvas>
+		</div>
 
 		<div class="fv-content">
 			<h1 class="catchphrase">追憶する</h1>
@@ -28,7 +26,7 @@
 		</div>
 	</section>
 
-	<!-- 3. メインコンテンツ（2カラム） -->
+	<!-- 3. メインコンテンツ -->
 	<div class="main-container">
 
 		<aside class="sidebar neu-panel-inset">
@@ -40,35 +38,10 @@
 			</ul>
 		</aside>
 
-		<main class="product-grid">
+		<div class="product-list-wrapper">
+			<jsp:include page="product-list.jsp" />
+		</div>
 
-			<article class="product-card neu-panel-outset">
-				<div class="product-thumb neu-panel-inset">
-					<span class="preview-label">360° PREVIEW</span>
-				</div>
-				<div class="product-info">
-					<span class="product-id">#1998-SUMMER</span>
-					<h4 class="product-name">誰もいない夕方のプールサイド</h4>
-					<p class="product-price">
-						¥4,500 <span class="data-type">(VR / 2D)</span>
-					</p>
-				</div>
-			</article>
-
-			<article class="product-card neu-panel-outset">
-				<div class="product-thumb neu-panel-inset">
-					<span class="preview-label">360° PREVIEW</span>
-				</div>
-				<div class="product-info">
-					<span class="product-id">#2004-CORRIDOR</span>
-					<h4 class="product-name">なぜか見覚えのある放課後の長い廊下</h4>
-					<p class="product-price">
-						¥3,800 <span class="data-type">(VR / 2D)</span>
-					</p>
-				</div>
-			</article>
-
-		</main>
 	</div>
 
 	<!-- 4. 閲覧履歴 -->
@@ -115,9 +88,51 @@
 		</div>
 	</section>
 
-	<!-- 5. フッター (将来的にインクルード化) -->
-	<footer class="site-footer">
-		<p>&copy; Residual Records</p>
-	</footer>
+	<!-- 商品詳細モーダル  -->
+	<div id="product-modal" class="modal-overlay" onmousedown="handleModalMouseDown(event)" onmouseup="handleModalMouseUp(event)">
+
+		<a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false"
+			class="fullscreen-bg-scene"> <a-sky id="modal-sky" src=""
+			rotation="0 -90 0"></a-sky> <a-entity camera
+			look-controls="reverseMouseDrag: true; magicWindowTrackingEnabled: false;"></a-entity>
+		</a-scene>
+
+		<div class="modal-fullscreen-layer" onclick="closeModal()">
+			<div class="modal-glass-panel" onclick="event.stopPropagation()">
+
+				<button class="modal-close-btn" onclick="closeModal()">×</button>
+
+				<div class="modal-info-content">
+					<span id="modal-product-id" class="modal-id">#000-VOID</span>
+					<h2 id="modal-product-name" class="modal-name">記憶のタイトル</h2>
+
+					<div class="modal-desc-scroll">
+						<p id="modal-product-desc" class="modal-desc">ここに解説文が流し込まれます。</p>
+					</div>
+
+					<div class="modal-purchase-box">
+						<div class="modal-price-tag">
+							<span class="price-label">ACCESS PRICE</span> <span
+								id="modal-product-price" class="price-value">¥0</span>
+						</div>
+						<button type="submit" class="neu-btn-circle modal-cart-btn"
+							onclick="addToCart()">この記憶をカートに保存する</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- 5. フッター  -->
+	<jsp:include page="footer.jsp" />
+
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+
+	<!-- 6. ページトップボタン  -->
+	<button id="to-top-btn" class="to-top-btn" title="最上部へ戻る"
+		onclick="scrollToTop()">
+		<i class="fa-solid fa-chevron-up"></i>
+	</button>
 </body>
 </html>

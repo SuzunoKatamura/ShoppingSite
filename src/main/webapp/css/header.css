@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* ヘッダー全体 */
+.site-header {
+	width: 100%;
+	background-color: #ECF0F3;
+	padding: 0 48px;
+	height: 120px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	/* モーダル(1000)のすぐ下、コンテンツの最前面に */
+
+	transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.site-header.hide {
+	transform: translateY(-100%) !important;
+}
+
+/* ロゴ */
+.logo {
+	padding-top: 16px;
+	font-size: 1.3rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	color: #555;
+	user-select: none;
+}
+
+/* 右側のボタンメニューエリア */
+.header-menu {
+	padding-top: 16px;
+	display: flex;
+	gap: 20px;
+	/* ボタン同士の間隔 */
+	align-items: center;
+}
+
+/* 丸ボタン */
+.header-menu button {
+	padding-top: 32px;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background: #ECF0F3;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	outline: none;
+
+	box-shadow: 5px 5px 10px #d1d9e0,
+		-5px -5px 10px #ffffff;
+
+	transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+/* SVG */
+.header-menu button img {
+	width: 22px;
+	height: 22px;
+	display: block;
+	pointer-events: none;
+
+	transition: opacity 0.2s ease;
+}
+
+/* ホバー */
+.header-menu button:active {
+	box-shadow: inset 3px 3px 6px #d1d9e0,
+		inset -3px -3px 6px #ffffff;
+}

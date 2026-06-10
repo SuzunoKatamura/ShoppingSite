@@ -125,6 +125,51 @@ body{
     color: #4A6CF7;
 }
 
+.mypage-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(184, 198, 209, 0.4);
+    margin-top: 30px;
+}
+.mypage-panel-title {
+    font-size: 1.1rem;
+    color: #718096;
+    margin-bottom: 20px;
+    border-left: 4px solid #4a5568;
+    padding-left: 10px;
+}
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.history-item {
+    background: #f4f7f9;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: inset 2px 2px 5px #d1d9e0, inset -2px -2px 5px #ffffff; /* クボミにしてシステムに埋め込まれてる感を出す */
+}
+.history-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #a0aec0;
+    font-family: monospace;
+    margin-bottom: 5px;
+}
+.history-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.history-name {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #2d3748;
+    margin: 0;
+}
+
 canvas{
     position: fixed;
     top: 0;

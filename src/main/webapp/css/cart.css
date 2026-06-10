@@ -72,3 +72,34 @@
 	font-size: 1.1rem;
 	padding: 15px 40px;
 }
+
+/*カートが空のとき*/
+.empty-cart-box {
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(184, 198, 209, 0.3);
+}
+.empty-icon {
+    font-size: 3rem;
+    color: #cbd5e0;
+    margin-bottom: 20px;
+}
+.empty-title {
+    font-size: 1.3rem;
+    color: #4a5568;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+.empty-message {
+    font-size: 0.9rem;
+    color: #90a4ae;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+.empty-return-btn {
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
