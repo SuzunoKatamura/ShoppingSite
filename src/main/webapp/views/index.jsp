@@ -117,14 +117,10 @@
 							<span class="price-label">ACCESS PRICE</span> <span
 								id="modal-product-price" class="price-value">¥0</span>
 						</div>
-						<form action="${pageContext.request.contextPath}/cart/cart-add" method="post">
 
-							<input type="hidden" name="productId"
-								value="${product.productId}">
+						<button type="button" class="neu-btn-circle modal-cart-btn"
+							onclick="addToCart()">この記憶をカートに保存する</button>
 
-							<button type="submit" class="neu-btn-circle modal-cart-btn">
-								この記憶をカートに保存する</button>
-						</form>
 					</div>
 				</div>
 
@@ -135,12 +131,13 @@
 	<!-- 5. フッター  -->
 	<jsp:include page="footer.jsp" />
 
-	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 
 	<!-- 6. ページトップボタン  -->
 	<button id="to-top-btn" class="to-top-btn" title="最上部へ戻る"
 		onclick="scrollToTop()">
 		<i class="fa-solid fa-chevron-up"></i>
 	</button>
+	
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
 </body>
 </html>

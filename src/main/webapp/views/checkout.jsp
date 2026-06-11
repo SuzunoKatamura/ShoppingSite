@@ -41,7 +41,7 @@
 		</div>
 	</div>
 
-	<footer class="site-footer"> ... </footer>
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>

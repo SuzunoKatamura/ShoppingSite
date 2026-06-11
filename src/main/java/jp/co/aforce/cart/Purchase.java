@@ -74,13 +74,13 @@ public class Purchase extends HttpServlet {
             // または cart.clear(); など、カートを空にする処理でもOK
 
             // 4つ目の画面「購入完了画面（JSP）」へフォワード
-            request.getRequestDispatcher("cart-out.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/cart-out.jsp").forward(request, response);
             
         } else {
             //  万が一DBエラーなどで失敗した場合
             request.setAttribute("errorMessage", "購入処理中にエラーが発生しました。もう一度お試しください。");
             // 3つ目の画面「注文内容確認画面（JSP）」に戻してあげる
-            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            request.getRequestDispatcher("purchase.jsp").forward(request, response);
         }
 	}
 	
