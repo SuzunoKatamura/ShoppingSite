@@ -3,6 +3,7 @@ package jp.co.aforce.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import jp.co.aforce.beans.Customer;
 
@@ -199,5 +200,37 @@ public class CustomerDAO extends DAO {
 
 		return exists;
 	}
+	
+		// 管理者画面用：会員情報を全件取得する処理
+		public List<Customer> findAllCustomers() throws Exception {
+			List<Customer> customerList = new java.util.ArrayList<>();
+
+			Connection con = getConnection();
+
+			// usersテーブルから会員情報を全員分、ID順で取得するSQL
+			PreparedStatement st = con.prepareStatement(
+					"SELECT * FROM users ORDER BY member_id ASC");
+			ResultSet rs = st.executeQuery();
+
+			while (rs.next()) {
+				Customer customer = new Customer();
+				
+				customer.setMember_id(rs.getString("member_id"));
+				customer.setPassword(rs.getString("password"));
+				customer.setLast_name(rs.getString("last_name"));
+				customer.setFirst_name(rs.getString("first_name"));
+				customer.setAddress(rs.getString("address"));
+				customer.setMail_address(rs.getString("mail_address"));
+				
+				// リストに1人ずつ追加
+				customerList.add(customer);
+			}
+
+			rs.close();
+			st.close();
+			con.close();
+
+			return customerList;
+		}
 
 }

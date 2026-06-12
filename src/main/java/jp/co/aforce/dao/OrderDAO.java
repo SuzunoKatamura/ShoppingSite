@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.co.aforce.beans.Order;
 import jp.co.aforce.beans.OrderItem;
@@ -94,6 +96,53 @@ public class OrderDAO extends DAO {
         }
 
         return result;
+    }
+    
+ // ⭕ OrderDAO.java の中（クラスの末尾など）に追加します
+    public List<Order> findAllOrders() {
+        List<Order> orderList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement st = null;
+        ResultSet rs = null;
+
+        try {
+            con = getConnection();
+            
+            //  注文履歴を新しい順（降順：DESC）で取得するSQL文
+            String sql = "SELECT order_id, user_id, total_price, order_date FROM orders ORDER BY order_date DESC";
+            st = con.prepareStatement(sql);
+            rs = st.executeQuery();
+
+            while (rs.next()) {
+                Order order = new Order();
+                
+                // DBから値を取り出して Order Bean にセット
+                // ※ご自身のOrderクラスのsetter名や型（Stringかintかなど）に合わせてください
+                order.setOrderId(rs.getInt("order_id"));     // 注文ID
+                order.setUserId(rs.getString("user_id"));          // ユーザーID
+                order.setTotalPrice(rs.getInt("total_price"));  // 決済金額
+                java.sql.Timestamp timestamp = rs.getTimestamp("order_date");
+                if (timestamp != null) {
+                    order.setOrderDate(timestamp.toLocalDateTime());
+                }
+                
+                //  もし購入された「商品名」や「メールアドレス」もここで一緒に取りたい場合、
+                // 本当はSQLで テーブル結合（JOIN） をする必要があります。
+                // 一旦は、このシンプルなOrderオブジェクトをリストに詰めて返します。
+                
+                orderList.add(order);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // いつものクローズ処理
+            if (rs != null) { try { rs.close(); } catch (Exception e) {} }
+            if (st != null) { try { st.close(); } catch (Exception e) {} }
+            if (con != null) { try { con.close(); } catch (Exception e) {} }
+        }
+
+        return orderList;
     }
 
 }

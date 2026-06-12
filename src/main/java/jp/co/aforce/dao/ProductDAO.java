@@ -12,12 +12,12 @@ public class ProductDAO extends DAO {
 	/**
      * productsテーブルからすべての商品データを取得するメソッド
      */
-    public List<Product> findAll() throws Exception { // 🔴getConnectionのエラーを上に投げるためthrowsを追加
+    public List<Product> findAll() throws Exception { // getConnectionのエラーを上に投げるためthrowsを追加
         List<Product> productList = new ArrayList<>();
         
         String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, DESCRIPTION, PRICE, THUMBNAIL_NAME, SPHERE_IMAGE_NAME, UPDATED_AT FROM products";
 
-        //  親の getConnection() を使ってスッキリ接続！
+        //  親の getConnection() を使って接続
         try (Connection conn = getConnection();
              PreparedStatement pStmt = conn.prepareStatement(sql);
              ResultSet rs = pStmt.executeQuery()) {
@@ -38,6 +38,36 @@ public class ProductDAO extends DAO {
         } //  try-with-resources文なので、エラーが起きてもconnやrsは自動で安全に閉じられます
         
         return productList;
+    }
+    
+    
+ // 商品追加（インサート）
+    public boolean insertProduct(Product product) {
+        Connection con = null;
+        PreparedStatement st = null;
+        int rows = 0;
+
+        try {
+            con = getConnection(); 
+           
+            String sql = "INSERT INTO products (PRODUCT_NAME, PRICE, DESCRIPTION) VALUES (?, ?, ?)";
+            st = con.prepareStatement(sql);
+            st.setString(1, product.getProductName());
+            st.setInt(2, product.getPrice());
+            st.setString(3, product.getDescription()); 
+
+            rows = st.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // いつものクローズ処理
+            if (st != null) { try { st.close(); } catch (Exception e) {} }
+            if (con != null) { try { con.close(); } catch (Exception e) {} }
+        }
+
+        // 1行以上追加されていれば成功（true）を返す
+        return rows > 0;
     }
 
 }
