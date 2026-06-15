@@ -1,5 +1,62 @@
 @charset "UTF-8";
 
+/* 🪐 検索バー全体のコンテナ */
+.search-container {
+    display: inline-block;
+    margin-right: 15px; /* カートボタンとの間隔 */
+    vertical-align: middle;
+}
+
+/* フォームの枠組み（ネオンブルーの細い枠線） */
+.search-form {
+    display: flex;
+    align-items: center;
+    border: 1px solid #00f2fe; /* サイバーネオンブルー */
+    border-radius: 20px;
+    padding: 2px 10px;
+    background: rgba(0, 0, 0, 0.5); /* 背景を少し透過 */
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* フォームにフォーカスしたとき、怪しく光る演出 */
+.search-form:focus-within {
+    border-color: #4facfe;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+}
+
+/* 🔍 文字を入力するテキストボックス */
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    width: 180px; /* 必要に応じて幅を調整してください */
+}
+
+/* プレースホルダー（うっすら文字）の色 */
+.search-input::placeholder {
+    color: #718096;
+}
+
+/* ⚡ 検索実行ボタン */
+.search-btn {
+    background: transparent;
+    border: none;
+    color: #00f2fe;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 5px;
+    transition: transform 0.2s ease;
+}
+
+.search-btn:hover {
+    transform: scale(1.2); /* ホバーした時にちょっと大きくなる */
+    color: #fff;
+}
+
 /* 3列グリッド */
 .product-grid {
 	display: grid;

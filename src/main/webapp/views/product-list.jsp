@@ -3,6 +3,16 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <link rel="stylesheet" href="../css/product-list.css">
 
+<div class="search-container">
+	<form
+		action="${pageContext.request.contextPath}/search/search-product"
+		method="get" class="search-form">
+		<input type="text" name="keyword" placeholder="記憶の断片を検索..." required
+			class="search-input">
+		<button type="submit" class="search-btn">⚡</button>
+	</form>
+</div>
+
 <main class="product-grid">
 
 	<%--  サーブレットから届いた productList を1件ずつ「product」という名前で取り出してループ --%>

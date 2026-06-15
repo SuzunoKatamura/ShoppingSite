@@ -180,7 +180,7 @@ body {
 						</td>
 					</tr>
 					<%
-					}
+						}
 					} else {
 					%>
 					<tr>
@@ -224,7 +224,7 @@ body {
 						<td>¥<%=String.format("%,d", o.getTotalPrice())%></td>
 					</tr>
 					<%
-					}
+						}
 					} else {
 					%>
 					<tr>
@@ -269,7 +269,7 @@ body {
 						</td>
 					</tr>
 					<%
-					}
+						}
 					} else {
 					%>
 					<tr>
@@ -301,9 +301,5 @@ body {
 			}
 		}
 	</script>
-</body>
-</html>
-</body>
-</html>
 </body>
 </html>
